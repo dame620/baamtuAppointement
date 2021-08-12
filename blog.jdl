@@ -1,0 +1,64 @@
+
+entity Appointment {
+	reason String
+	date Instant
+}
+
+entity Manager {
+    registrationNumber String
+    department String
+}
+
+entity Company{
+	name String
+    ninea String
+    rc String
+    address String
+}
+
+entity Bank{
+	name String
+    address String
+}
+
+entity Adviser {
+    registrationNumber String
+    company String
+    department String
+}
+
+
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+
+// defining multiple OneToMany relationships with comments
+
+
+relationship OneToOne {
+	Manager{user(login)} to User
+    Adviser{user(login)} to User
+}
+
+relationship ManyToOne {
+Appointment{adviser(registrationNumber)} to Adviser
+Appointment{manager(registrationNumber)} to Manager
+Manager{company(name)} to Company
+Adviser{bank(name)} to Bank
+}
+
+
+
+
+// Set pagination options
+paginate Manager, Adviser with infinite-scroll
+paginate Appointment with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Appointment
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

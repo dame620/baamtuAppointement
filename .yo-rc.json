@@ -42,6 +42,8 @@
     "devServerPort": 4200,
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
-    "languages": ["fr"]
+    "languages": ["fr"],
+    "entities": ["Appointment", "Manager", "Company", "Bank", "Adviser"],
+    "lastLiquibaseTimestamp": 1628606222000
   }
 }
